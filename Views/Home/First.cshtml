@@ -1,9 +1,12 @@
-﻿@{
+﻿﻿
+@{
     ViewData["Title"] = "First";
 }
 
 <h1>First</h1>
-<button id="buttonStart" class="btn btn-primary"> Ajax Start</button>
+<button id="buttonStart" class="btn btn-primary">Ajax Start</button>
+<button id="buttonStop" class="btn btn-primary">Ajax Stop</button>
+<img id="img1" style="display:none" src="~/images/Skateboarding.gif" />
 <div id="div1" class="alert alert-info"></div>
 
 @section Scripts{
@@ -51,24 +54,32 @@
                 const data = xhr.responseText;
                 //步驟四讀取資料
                 //步驟五顯示資料
-                theDiv.innerHTML += data + '< br />';
+                theDiv.innerHTML += data + "<br  />";
             })
 
             //timeout時間到會觸發此事件
             xhr.addEventListener('timeout', () => {
-                theDiv.innerHTML += '伺服器忙碌中，請稍後再來< br />';
+                theDiv.innerHTML += "伺服器忙碌中，請稍後再來<br  />";
             })
 
             //abort方法被呼叫會觸發此事件
             xhr.addEventListener('abort', () => {
-                theDiv.innerHTML += '您停止了程式的執行< br />';
+                theDiv.innerHTML += "您停止了程式的執行<br  />";
             })
+
 
             xhr.open('GET', '@Url.Content("~/api/index")?name=Jack&age=30');
             xhr.timeout = 3000; //要設定在open()方法之後
             xhr.send();
 
+
+
+
+
         })
+
+
+
 
     </script>
 }

@@ -38,5 +38,9 @@ namespace MSIT153Site.Controllers
         {
             return View();
         }
+        public IActionResult Register()
+        {
+            return View();
+        }
     }
 }
