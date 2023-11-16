@@ -11,7 +11,7 @@
             <div class="mb-3">
                 <label for="inputName" class="form-label">姓名</label>
                 <input type="text" class="form-control" id="inputName" name="name">
-                <div class="alert alert-info"></div>
+                <div id="divName" class="alert alert-info"></div>
             </div>
             <div class="mb-3">
                 <label for="inputEmail" class="form-label">電子郵件</label>
@@ -39,8 +39,30 @@
         //const name = document.querySelector('#inputName');
         //const email = document.querySelector('#inputEmail');
         //const age = document.querySelector('#inputAge');
+
+        //Homework2
+        const nameDiv = document.querySelector('#divName');
+        const inName = document.querySelector('#inputName');
+
+        inName.addEventListener('blur', () => {
+
+            const xhr = new XMLHttpRequest();
+
+            xhr.addEventListener('load', () => {
+                const data = xhr.responseText;
+                nameDiv.innerHTML = data;
+            })
+
+            const formData = new FormData(document.querySelector('#memberForm'));
+
+            xhr.open('POST', '@Url.Content("~/Api/CheckAccount")');
+            xhr.send(formData);
+
+        });
+
+
         btn.addEventListener('click',event=>{
-        //   event.preventDefault();
+           event.preventDefault();
 
         //    //建立Ajax物件
         //    const xhr =  new XMLHttpRequest();
