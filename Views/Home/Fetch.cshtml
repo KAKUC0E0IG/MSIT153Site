@@ -4,7 +4,9 @@
 }
 
 <h1>Fetch</h1>
-
+<div id="div1"></div>
+<img id="img1" />
+<ul id="ul1"></ul>
 @section Scripts{
     <script>
         //fetch('@Url.Content("~/api/index")?name=Mary&age=30')
@@ -12,21 +14,34 @@
         //        console.log(response);
         //        console.log(response.ok);
         //        console.log(response.status);
-        //         console.log(response.headers.get('Content-Type'));
-        //         console.log(response.headers.get('Content-Length'));
-        //         console.log(response.headers.get('Date'));
-        //         if(response.ok){
-        //           return  response.text();
-        //         }else{
+        //        console.log(response.headers.get('Content-Type'));
+        //        console.log(response.headers.get('Content-Length'));
+        //        console.log(response.headers.get('Date'));
+        //        if (response.ok) {
+        //            return response.text();
+        //        } else {
 
-        //         }
+        //        }
         //    })
-        //    .then(data=>{
+        //    .then(data => {
         //        console.log(data);
         //    })
 
-         fetch('@Url.Content("~/api/index")?name=Mary&age=30')
-             .then(response => response.text())
-             .then(data => console.log(data))
+        //fetch('@Url.Content("~/api/index")?name=Mary&age=30')
+        //    .then(response => response.text())
+        //    .then(data => console.log(data))
+
+        fetch('@Url.Content("~/api/Cities")')
+            .then(response => response.json())
+            .then(data => {
+                const city = data.map(cities => `<li>${cities} </li>`)
+                document.querySelector('#ul1').innerHTML = city.join("");
+            })
+
+        fetch('@Url.Content("~/api/Image/1")')
+        .then(reponse=>reponse.blob())
+        .then(datas=>{
+                document.querySelector('#img1').src = URL.createObjectURL(datas);
+        })
     </script>
 }

@@ -84,6 +84,29 @@ namespace MSIT153Site.Controllers
             return Json(roads);
         }
 
+        public IActionResult Image(int? id)
+        {
+            Members? member = _context.Members.Find(id);
+            byte[] img = member?.FileData;
+            if (img != null)
+            {
+                return File(img, "image/jpeg");
+            }
+            return NotFound();
+        }
 
+        public IActionResult CheckAccount(string? name)
+        {
+            //if (vm.name == "")
+            //    return Content("請輸入姓名");
+            //var data = _demo.Members.Any(m=>m.Name==name);
+            if (name == null)
+                return Content("請輸入姓名");
+            if (!_context.Members.Any(m => m.Name == name))
+                return Content("此名稱可使用");
+            else
+                return Content("此名稱已被註冊");
+
+        }
     }
 }
