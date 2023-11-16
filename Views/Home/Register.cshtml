@@ -80,7 +80,7 @@
         // //   xhr.send('name=Jack&age=30&email=Jack@company.com');
         //    //xhr.send(`name=${name.value}&age=${age.value}&email=${email.value}`);
         //    xhr.send(formData);
- const formData = new FormData(document.querySelector('#memberForm'));
+        const formData = new FormData(document.querySelector('#memberForm'));
         fetch('@Url.Content("~/api/Register")',{
             method:'POST',
             body:formData

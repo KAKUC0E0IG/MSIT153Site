@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MSIT153Site.Models;
 using System.Diagnostics;
 
@@ -60,6 +61,16 @@ namespace MSIT153Site.Controllers
         }
 
         public IActionResult Homework1()
+        {
+            return View();
+        }
+
+        public IActionResult Homework3()
+        {
+            return View();
+        }
+
+        public IActionResult History()
         {
             return View();
         }
