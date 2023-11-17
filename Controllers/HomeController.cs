@@ -29,6 +29,10 @@ namespace MSIT153Site.Controllers
             return View();
         }
 
+        public IActionResult jQuery()
+        {
+            return View();
+        }
         public IActionResult Members()
         {
             return View(_context.Members);
@@ -59,6 +63,18 @@ namespace MSIT153Site.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Partial1()
+        {
+            return PartialView();
+        }
+        public IActionResult Partial2()
+        {
+            ViewBag.message = "資料來自 Partial2 Action";
+
+            return PartialView();
+        }
+
 
         public IActionResult Homework1()
         {
